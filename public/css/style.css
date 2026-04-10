@@ -1,0 +1,221 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #1a1a2e;
+  color: #eee;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 520px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.4);
+}
+
+h1, h2, h3 { text-align: center; margin-bottom: 1rem; }
+h1 { font-size: 1.8rem; }
+h2 { font-size: 1.4rem; }
+
+/* ---------- Forms ---------- */
+label { display: block; margin-bottom: .3rem; font-size: .9rem; color: #aaa; }
+
+input[type="text"] {
+  width: 100%;
+  padding: .6rem .8rem;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #0f3460;
+  color: #eee;
+  font-size: 1rem;
+  margin-bottom: .8rem;
+}
+
+input[type="text"]:focus { outline: none; border-color: #e94560; }
+
+textarea {
+  width: 100%;
+  padding: .6rem .8rem;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #0f3460;
+  color: #eee;
+  font-size: 1rem;
+  margin-bottom: .8rem;
+  resize: vertical;
+  min-height: 60px;
+}
+
+textarea:focus { outline: none; border-color: #e94560; }
+
+button {
+  display: block;
+  width: 100%;
+  padding: .7rem;
+  border: none;
+  border-radius: 6px;
+  background: #e94560;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: .5rem;
+  transition: background .2s;
+}
+
+button:hover { background: #c73652; }
+button:disabled { background: #555; cursor: not-allowed; }
+
+/* ---------- Emoji picker ---------- */
+.emoji-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.emoji-grid span {
+  font-size: 1.6rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color .15s;
+}
+
+.emoji-grid span:hover { border-color: #e94560; }
+.emoji-grid span.selected { border-color: #e94560; background: rgba(233,69,96,.2); }
+
+/* ---------- Player list ---------- */
+.player-list {
+  list-style: none;
+  margin: 1rem 0;
+}
+
+.player-list li {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .5rem .6rem;
+  border-radius: 6px;
+  background: #0f3460;
+  margin-bottom: .4rem;
+}
+
+.player-list li .avatar { font-size: 1.4rem; }
+.player-list li .name { flex: 1; }
+.player-list li.disconnected { opacity: .45; }
+
+.player-count {
+  text-align: center;
+  margin-bottom: .6rem;
+  color: #aaa;
+  font-size: .9rem;
+}
+
+/* ---------- Answer cards (vote page) ---------- */
+.answer-card {
+  display: block;
+  padding: .8rem 1rem;
+  background: #0f3460;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  margin-bottom: .5rem;
+  cursor: pointer;
+  transition: border-color .15s;
+}
+
+.answer-card:hover { border-color: #e94560; }
+.answer-card.selected { border-color: #e94560; background: rgba(233,69,96,.15); }
+
+.answer-card input[type="radio"] { display: none; }
+
+/* ---------- Reveal / score table ---------- */
+.reveal-list {
+  list-style: none;
+  margin: 1rem 0;
+}
+
+.reveal-list li {
+  padding: .5rem .6rem;
+  background: #0f3460;
+  border-radius: 6px;
+  margin-bottom: .4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reveal-list li.admin-answer { border-left: 3px solid #e94560; }
+.reveal-list li .votes-badge {
+  background: #e94560;
+  border-radius: 12px;
+  padding: .15rem .5rem;
+  font-size: .8rem;
+}
+
+.leaderboard {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.leaderboard th, .leaderboard td {
+  text-align: left;
+  padding: .5rem .6rem;
+  border-bottom: 1px solid #333;
+}
+
+.leaderboard th { color: #aaa; font-size: .85rem; }
+
+/* ---------- Status messages ---------- */
+.status-msg {
+  text-align: center;
+  padding: 1.2rem;
+  color: #aaa;
+  font-size: 1.1rem;
+}
+
+.error-msg {
+  background: rgba(233,69,96,.15);
+  color: #e94560;
+  padding: .6rem .8rem;
+  border-radius: 6px;
+  margin-bottom: .8rem;
+  text-align: center;
+  display: none;
+}
+
+.error-msg.visible { display: block; }
+
+/* ---------- Info row (your vote, etc.) ---------- */
+.info-box {
+  background: #0f3460;
+  border-radius: 8px;
+  padding: .8rem 1rem;
+  margin-bottom: .8rem;
+}
+
+.info-box strong { color: #e94560; }
+
+/* ---------- Utility ---------- */
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+.mt-1 { margin-top: 1rem; }
+
+/* ---------- Mobile adjustments ---------- */
+@media (max-width: 480px) {
+  .container { padding: 1.2rem; width: 95%; }
+  h1 { font-size: 1.4rem; }
+  .emoji-grid span { font-size: 1.3rem; width: 2rem; height: 2rem; }
+}

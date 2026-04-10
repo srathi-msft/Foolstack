@@ -1,50 +1,175 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+  ============================================================================
+  SYNC IMPACT REPORT
+  ============================================================================
+  Version change: 0.0.0 (template) → 1.0.0
+  Bump rationale: MAJOR — first ratification of project constitution
+
+  Modified principles:
+    - [PRINCIPLE_1_NAME] → I. MVP First, Always
+    - [PRINCIPLE_2_NAME] → II. Code Simplicity & Readability
+    - [PRINCIPLE_3_NAME] → III. No Overengineering
+    - [PRINCIPLE_4_NAME] → IV. Testing & Verification
+    - [PRINCIPLE_5_NAME] → V. User Experience (UX) Consistency
+    - (new) → VI. Performance (Pragmatic, Not Premature)
+    - (new) → VII. Delivery Standards
+
+  Added sections:
+    - Purpose (preamble)
+    - Principle VI — Performance (Pragmatic, Not Premature)
+    - Principle VII — Delivery Standards
+    - Guiding Question
+    - Governance (fully defined)
+
+  Removed sections:
+    - [SECTION_2_NAME] / [SECTION_3_NAME] generic placeholders (replaced)
+
+  Templates requiring updates:
+    - .specify/templates/plan-template.md        ✅ compatible (dynamic gates)
+    - .specify/templates/spec-template.md         ✅ compatible (MVP slices)
+    - .specify/templates/tasks-template.md        ✅ compatible (optional tests)
+    - .specify/templates/checklist-template.md    ✅ compatible (generic)
+
+  Follow-up TODOs: none
+  ============================================================================
+-->
+
+# AIMarketplace Constitution
+
+## Purpose
+
+This constitution defines how code and product MUST be built for
+AIMarketplace. Our primary goal as a startup is to ship a **working,
+minimal MVP** as quickly as possible, without sacrificing basic
+correctness, clarity, or user trust.
+
+We value **simplicity over cleverness**, **clarity over abstraction**,
+and **working software over theoretical perfection**.
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. MVP First, Always
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+- Every feature MUST deliver a **running, usable version** first.
+- The simplest solution that satisfies the requirement MUST be chosen.
+- Do NOT overengineer for scale, extensibility, or edge cases unless
+  explicitly required by the current specification.
+- Optimizations, abstractions, and refactors MUST be deferred until
+  the MVP is stable and validated.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+**Rationale**: Shipping working software is the only way to learn
+what users actually need. Premature investment in flexibility delays
+that learning.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### II. Code Simplicity & Readability
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+- Code MUST be **easy to read, understand, and modify**.
+- Prefer explicit, straightforward logic over complex patterns.
+- Avoid unnecessary abstractions, frameworks, layers, or indirection.
+- Avoid premature generalization.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+Guidelines:
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- Short functions with clear responsibilities.
+- Meaningful variable and function names.
+- Minimal magic, minimal configuration.
+- Favor clarity over DRY if it improves readability.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+**Rationale**: If a junior engineer cannot understand the code
+quickly, it is too complex.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### III. No Overengineering
+
+Do NOT introduce any of the following unless **clearly justified by
+current requirements**:
+
+- Complex architectures
+- Heavy design patterns
+- Custom frameworks
+- Advanced optimizations
+
+Build for **today's needs**, not hypothetical future ones.
+
+**Rationale**: Unused abstractions are liabilities, not assets.
+Every layer of indirection MUST earn its place.
+
+### IV. Testing & Verification
+
+- Every solution MUST be verified **end-to-end** before delivery.
+- At minimum:
+  - Manually test the main user flows.
+  - Validate critical logic paths.
+- Add automated tests only where they provide **clear, immediate
+  value** for the MVP.
+
+**Rationale**: Untested code is unfinished code. However, exhaustive
+test suites for throwaway prototypes waste time.
+
+### V. User Experience (UX) Consistency
+
+- UI MUST be minimal, clean, intuitive, and easy to navigate.
+- Avoid visual clutter and unnecessary interactions.
+- Prefer fewer screens, fewer clicks, and clear defaults.
+
+Design rules:
+
+- The user MUST understand what to do without instructions.
+- Navigation MUST be obvious and predictable.
+- If something can be simpler, make it simpler.
+
+**Rationale**: Users judge the product by its interface. Confusing
+UX erodes trust faster than missing features.
+
+### VI. Performance (Pragmatic, Not Premature)
+
+- The app MUST be "fast enough" for MVP usage.
+- Avoid obvious inefficiencies (unnecessary loops, repeated calls).
+- Do NOT optimize prematurely.
+- Address performance issues only when they are **observable and
+  impactful**.
+
+**Rationale**: Premature optimization obscures intent and wastes
+effort on problems that may never materialize.
+
+### VII. Delivery Standards
+
+Before delivering any work:
+
+- The app MUST run successfully.
+- The core requirements MUST be implemented.
+- The code MUST be readable and minimal.
+- The primary user flow MUST be tested.
+
+If something is incomplete, it MUST be called out clearly rather
+than hidden.
+
+**Rationale**: Incomplete work disguised as done is worse than
+incomplete work clearly labeled.
+
+## Guiding Question
+
+At every decision point, ask:
+
+> "What is the simplest thing that works and gets us closer to a
+> usable product?"
+
+If in doubt, choose **simplicity**, **clarity**, and **speed**.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- This constitution **supersedes** all other development practices
+  and guidelines for the AIMarketplace project.
+- All code reviews and pull requests MUST verify compliance with
+  these principles.
+- Any complexity beyond the simplest working solution MUST be
+  justified against the Guiding Question.
+- Amendments to this constitution require:
+  1. A written proposal describing the change and its rationale.
+  2. Review and approval by the project lead.
+  3. Version bump following semantic versioning (MAJOR for principle
+     removal/redefinition, MINOR for additions, PATCH for wording).
+  4. Update of the `Last Amended` date.
+- Compliance review SHOULD occur at sprint boundaries or before
+  major releases.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-03-30 | **Last Amended**: 2026-03-30

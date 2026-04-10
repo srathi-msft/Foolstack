@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoolStack — Scores</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🃏 FoolStack</h1>
+    <h2>Round Results</h2>
+    <div class="error-msg" id="error"></div>
+
+    <!-- Your vote info (players only) -->
+    <div id="your-vote-info" class="info-box hidden"></div>
+
+    <!-- Points this round -->
+    <div id="points-info" class="info-box hidden"></div>
+
+    <!-- Answer reveal -->
+    <h3 class="mt-1">All Answers</h3>
+    <ul class="reveal-list" id="reveal-list"></ul>
+
+    <!-- Leaderboard -->
+    <h3 class="mt-1">🏆 Leaderboard</h3>
+    <table class="leaderboard">
+      <thead><tr><th>#</th><th>Player</th><th>Score</th></tr></thead>
+      <tbody id="leaderboard-body"></tbody>
+    </table>
+
+    <!-- Admin: next round button -->
+    <button id="next-round-btn" class="hidden mt-1">Start Next Prompt Phase</button>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/score.js"></script>
+</body>
+</html>

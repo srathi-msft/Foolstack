@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoolStack — Prompt</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🃏 FoolStack</h1>
+    <div class="error-msg" id="error"></div>
+
+    <!-- Admin: submit prompt + answer -->
+    <div id="admin-prompt-form" class="hidden">
+      <h2>Enter a Prompt</h2>
+      <label for="prompt-input">Prompt</label>
+      <textarea id="prompt-input" placeholder="Type a prompt for players..." maxlength="200" required></textarea>
+
+      <label for="admin-answer-input">Your Trick Answer</label>
+      <input type="text" id="admin-answer-input" placeholder="Your sneaky answer..." maxlength="150" required>
+
+      <button id="submit-prompt-btn">Submit Prompt</button>
+    </div>
+
+    <!-- Admin: waiting for answers after prompt submitted -->
+    <div id="admin-waiting" class="hidden">
+      <h2>Prompt Sent!</h2>
+      <p class="status-msg" id="answer-count-msg">Waiting for answers...</p>
+      <button id="begin-vote-btn">Begin Vote Phase</button>
+    </div>
+
+    <!-- Player: answer the prompt -->
+    <div id="player-prompt" class="hidden">
+      <h2 id="prompt-text"></h2>
+      <label for="answer-input">Your Answer</label>
+      <input type="text" id="answer-input" placeholder="Type your answer..." maxlength="150" required>
+      <button id="submit-answer-btn">Submit Answer</button>
+    </div>
+
+    <!-- Player: waiting after submitting answer -->
+    <div id="player-waiting" class="hidden">
+      <p class="status-msg">Waiting for others to answer...</p>
+    </div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/prompt.js"></script>
+</body>
+</html>

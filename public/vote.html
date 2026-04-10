@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoolStack — Vote</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🃏 FoolStack</h1>
+    <div class="error-msg" id="error"></div>
+
+    <!-- Admin: see vote progress -->
+    <div id="admin-vote" class="hidden">
+      <h2>Voting in Progress</h2>
+      <p class="status-msg" id="vote-count-msg">Waiting for votes...</p>
+      <button id="start-score-btn">Start Score Phase</button>
+    </div>
+
+    <!-- Player: vote on answers -->
+    <div id="player-vote" class="hidden">
+      <h2 id="vote-prompt-text"></h2>
+      <p style="color:#aaa; margin-bottom:.8rem;">Which answer do you think is the admin's?</p>
+      <div id="answers-container"></div>
+      <button id="submit-vote-btn" disabled>Submit Vote</button>
+    </div>
+
+    <!-- Player: waiting after voting -->
+    <div id="player-vote-waiting" class="hidden">
+      <p class="status-msg">Waiting for others to vote...</p>
+    </div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/vote.js"></script>
+</body>
+</html>

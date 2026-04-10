@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoolStack — Join Game</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🃏 FoolStack</h1>
+    <p class="text-center" style="color:#aaa; margin-bottom:1.5rem;">Join the game</p>
+    <div class="error-msg" id="error"></div>
+
+    <form id="login-form" autocomplete="off">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" maxlength="20" placeholder="Enter your name" required>
+
+      <label for="code">Game Code</label>
+      <input type="text" id="code" maxlength="30" placeholder="Enter game or admin code" required>
+
+      <label>Pick an Avatar</label>
+      <div class="emoji-grid" id="emoji-grid"></div>
+
+      <button type="submit">Join Game</button>
+    </form>
+  </div>
+  <script src="/js/login.js"></script>
+</body>
+</html>
