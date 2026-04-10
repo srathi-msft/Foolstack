@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const express = require('express');
@@ -21,7 +22,12 @@ game.initSession(GAME_CODE, ADMIN_CODE);
 // ── Express setup (T005) ───────────────────────────────────
 const app = express();
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '..', 'public')));
+
+// Resolve public dir: in dev it's ../public (sibling), in deployed zip it's ./public (child)
+const publicDir = fs.existsSync(path.join(__dirname, 'public'))
+  ? path.join(__dirname, 'public')
+  : path.join(__dirname, '..', 'public');
+app.use(express.static(publicDir));
 
 const server = http.createServer(app);
 

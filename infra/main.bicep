@@ -44,6 +44,7 @@ resource webApp 'Microsoft.Web/sites@2023-12-01' = {
         { name: 'ADMIN_CODE', value: adminCode }
         { name: 'PORT', value: '8080' }
         { name: 'WEBSITE_NODE_DEFAULT_VERSION', value: '~20' }
+        { name: 'SCM_DO_BUILD_DURING_DEPLOYMENT', value: 'true' }
       ]
     }
   }

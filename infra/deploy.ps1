@@ -53,8 +53,10 @@ $zipPath = Join-Path $PSScriptRoot "deploy.zip"
 $stagingDir = Join-Path $env:TEMP "foolstack-staging-$(Get-Random)"
 New-Item -ItemType Directory -Path $stagingDir -Force | Out-Null
 
-# Copy server files (including node_modules)
-Copy-Item -Path "$serverDir\*" -Destination $stagingDir -Recurse -Force
+# Copy server files (excluding node_modules — Oryx will run npm install)
+Get-ChildItem -Path $serverDir | Where-Object { $_.Name -ne 'node_modules' -and $_.Name -ne '.env' } | ForEach-Object {
+    Copy-Item -Path $_.FullName -Destination $stagingDir -Recurse -Force
+}
 
 # Copy public directory
 Copy-Item -Path $publicDir -Destination "$stagingDir\public" -Recurse -Force
